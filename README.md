@@ -24,7 +24,7 @@ git clone https://github.com/AlanAlbert/alan-php-env.git
 2、进入项目目录，并执行php-env-start.sh文件
 
 ```shell script
-cd alan-php-env && chmod +x *.sh && build.sh
+cd docker-php-env && chmod +x *.sh && build.sh
 ```
 
 ### 运行
