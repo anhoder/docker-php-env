@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "开始构建..."
 echo "正在构建PHP-FPM..."
