@@ -1,18 +1,19 @@
-FROM ubuntu
+FROM nginx
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list \
-    && sed -i 's/security.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list \
-    && apt update \
-    && apt install nginx -y
+LABEL maintainer="AlanAlbert" version="1.0" description="nginx"
+
+ENV TZ=Asia/Shanghai
 
 COPY nginx.conf /etc/nginx/
-COPY sites/* /etc/nginx/sites-enabled/
+COPY sites/*.conf /etc/nginx/conf.d/
 
-# Clean
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    rm /var/log/lastlog /var/log/faillog
+VOLUME /home/www /var/log/nginx
 
-CMD [ "/usr/sbin/nginx" ]
+RUN useradd www \
+    && chown -R www /home/www
+
+WORKDIR /home/www
+
+CMD ["/usr/sbin/nginx"]
 
 EXPOSE 80 443
