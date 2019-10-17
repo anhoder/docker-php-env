@@ -33,6 +33,10 @@ cd alan-php-env && chmod +x *.sh && build.sh
 ./start.sh
 ```
 
+打开浏览器，访问http://localhost、http://localhost/phpinfo.php，若能成功访问页面，表示运行成功！
+
+## Other
+
 ### 停止
 
 ```shell script
