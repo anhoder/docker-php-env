@@ -20,4 +20,4 @@ WORKDIR /
 
 CMD ["/usr/local/sbin/php-fpm"]
 
-EXPOSE 9000
+EXPOSE 9000 18306

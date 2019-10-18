@@ -4,7 +4,7 @@ set -e
 echo "开始构建..."
 echo "正在构建PHP-FPM..."
 docker build -t alan/php-fpm php-fpm
-docker create -p 9000:9000 --name alan_php-fpm -it -v `pwd`/www:/home/www -v `pwd`/logs/php-fpm:/var/log/php-fpm --network alan_php_env alan/php-fpm
+docker create -p 9000:9000 -p 18306:18306 --name alan_php-fpm -it -v `pwd`/www:/home/www -v `pwd`/logs/php-fpm:/var/log/php-fpm --network alan_php_env alan/php-fpm
 echo "PHP-FPM构建完成."
 echo "正在构建Nginx..."
 docker build -t alan/nginx nginx
