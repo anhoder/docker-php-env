@@ -6,8 +6,6 @@ ENV MYSQL_ALLOW_EMPTY_PASSWORD=true \
     MYSQL_ROOT_PASSWORD="" \
     TZ=Asia/Shanghai
 
-COPY my.cnf /etc/mysql/
-
-VOLUME /var/lib/mysql
+VOLUME /var/lib/mysql /etc/mysql
 
 EXPOSE 3306

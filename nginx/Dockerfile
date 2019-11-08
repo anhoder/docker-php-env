@@ -5,9 +5,8 @@ LABEL maintainer="AlanAlbert" version="1.0" description="nginx"
 ENV TZ=Asia/Shanghai
 
 COPY nginx.conf /etc/nginx/
-COPY sites/*.conf /etc/nginx/conf.d/
 
-VOLUME /home/www /var/log/nginx
+VOLUME /home/www /var/log/nginx /etc/nginx/conf.d
 
 RUN useradd www \
     && chown -R www /home/www
