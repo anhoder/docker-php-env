@@ -11,17 +11,12 @@
 
         ## MySQL测试
         $dsn = 'mysql:host=alan_mysql;dbname=test';
-        $pdo = new PDO($dsn, 'root', '');
-        $stmt = $pdo->query("select * from sys_user");
-        foreach ($stmt as $row) {
-            var_dump($row);
-        }
+        $pdo = new PDO($dsn, 'root', '123456');
+        var_dump($pdo);
 
         ## Redis测试
         $redis = new Redis();
-        $redis->connect('alan_redis', 6379);
-        $redis->set('test', 123);
-        var_dump($redis->get('test'));
+        var_dump($redis);
     ?>
 </body>
 </html>
