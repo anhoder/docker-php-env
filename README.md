@@ -9,7 +9,28 @@
 * MySQL 5.7
 * Redis
 
-## Usage
+## Usage（使用docker-compose，推荐）
+
+```sh
+# 全部启动
+docker-compose up -d 
+
+# 然后打开浏览器，访问http://localhost:8081
+# NGINX默认端口为8081，可以再.env中进行修改
+
+
+
+# 单独启动某个容器
+docker-compose up -d nginx
+
+docker-compose up -d mysql
+
+# ...
+```
+
+**docker-compose的配置文件位于.env，可以根据需要进行修改**
+
+## Usage（使用脚本文件）
 
 先构建，后运行
 
@@ -17,13 +38,13 @@
 
 1、Clone代码到本地
 
-```shell script
+```sh
 git clone https://github.com/AlanAlbert/alan-php-env.git
 ```
 
 2、进入项目目录，并执行php-env-start.sh文件
 
-```shell script
+```sh
 cd docker-php-env && chmod +x *.sh && build.sh
 ```
 
