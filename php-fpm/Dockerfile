@@ -2,7 +2,7 @@ FROM php:7.2-fpm
 
 LABEL maintainer="AlanAlbert" version="1.0" description="php-fpm(php 7.2)"
 
-ENV TZ=Asia/Shanghai
+ARG TIMEZONE
 
 COPY php-fpm.conf /usr/local/etc/
 
@@ -10,6 +10,9 @@ COPY php-fpm.conf /usr/local/etc/
 RUN  sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get clean \
     && apt-get update -yqq
+
+RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+    && echo '${TIMEZONE}' >/etc/timezone
 
 # 安装intl依赖
 RUN apt-get install -y zlib1g-dev libicu-dev g++ \

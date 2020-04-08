@@ -12,6 +12,8 @@ services:
         container_name: alan_php-fpm
         build: 
             context: ./php-fpm
+            args: 
+                - TIMEZONE=${TIMEZONE}
         volumes: 
             - ${WEBSITES_DIR}:/home/www
             - ${PHP_FPM_LOG_DIR}:/var/log/php-fpm
@@ -28,6 +30,8 @@ services:
         container_name: alan_nginx
         build:
             context: ./nginx
+            args: 
+                - TIMEZONE=${TIMEZONE}
         volumes: 
             - ${WEBSITES_DIR}:/home/www
             - ${NGINX_LOG_DIR}:/var/log/nginx
@@ -46,6 +50,8 @@ services:
         container_name: alan_mysql
         build: 
             context: ./mysql
+            args: 
+                - TIMEZONE=${TIMEZONE}
         volumes: 
             - ${MYSQL_DATA}:/var/lib/mysql
             - ${MYSQL_CONF}:/etc/mysql/conf.d
