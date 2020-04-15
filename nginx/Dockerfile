@@ -4,7 +4,7 @@ LABEL maintainer="AlanAlbert" version="1.0" description="nginx"
 
 ARG TIMEZONE
 
-COPY nginx.conf /etc/nginx/
+RUN rm -rf /etc/nginx/nginx.conf
 
 VOLUME /home/www /var/log/nginx /etc/nginx/conf.d
 
