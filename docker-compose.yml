@@ -14,6 +14,7 @@ services:
             context: ./php-fpm
             args: 
                 - TIMEZONE=${TIMEZONE}
+        image: alan_php-fpm:1.0.0
         volumes: 
             - ${WEBSITES_DIR}:/home/www
             - ${PHP_FPM_LOG_DIR}:/var/log/php-fpm
@@ -32,6 +33,7 @@ services:
             context: ./nginx
             args: 
                 - TIMEZONE=${TIMEZONE}
+        image: alan_nginx:1.0.0
         volumes: 
             - ${WEBSITES_DIR}:/home/www
             - ${NGINX_LOG_DIR}:/var/log/nginx
@@ -53,6 +55,7 @@ services:
             context: ./mysql
             args: 
                 - TIMEZONE=${TIMEZONE}
+        image: alan_mysql:1.0.0
         volumes: 
             - ${MYSQL_DATA}:/var/lib/mysql
             - ${MYSQL_CONF}:/etc/mysql/conf.d
@@ -73,6 +76,7 @@ services:
         container_name: alan_redis
         build: 
             context: ./redis
+        image: alan_reds:1.0.0
         ports: 
             - "${REDIS_PORT}:6379"
         networks:

@@ -14,6 +14,12 @@ RUN  sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
 RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo '${TIMEZONE}' >/etc/timezone
 
+# 安装composer
+RUN curl -O https://getcomposer.org/download/1.10.5/composer.phar \
+    && chmod +x composer.phar \
+    && mv composer.phar /usr/local/bin/composer \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+
 # 安装intl依赖
 RUN apt-get install -y zlib1g-dev libicu-dev g++ \
     && docker-php-ext-configure intl
