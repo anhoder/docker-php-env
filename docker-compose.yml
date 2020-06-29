@@ -75,3 +75,15 @@ services:
             - "${REDIS_PORT}:6379"
         networks:
             - backend
+
+    ## PHP8
+    php8:
+        container_name: alan_php8
+        build: 
+            context: ./php8
+            args: 
+                - TIMEZONE=${TIMEZONE}
+        volumes: 
+            - ${WEBSITES_DIR}:/home/www
+        networks:
+            - backend
