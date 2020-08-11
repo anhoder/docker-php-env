@@ -9,7 +9,7 @@ COPY php-fpm.conf /usr/local/etc/
 # 更新源
 RUN  sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get clean \
-    && apt-get update -yqq
+    && apt-get update -yqq --fix-missing
 
 RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo '${TIMEZONE}' >/etc/timezone
