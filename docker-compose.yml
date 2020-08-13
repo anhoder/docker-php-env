@@ -76,7 +76,7 @@ services:
         container_name: alan_redis
         build: 
             context: ./redis
-        image: alan_reds:1.0.0
+        image: alan_redis:1.0.0
         ports: 
             - "${REDIS_PORT}:6379"
         networks:
