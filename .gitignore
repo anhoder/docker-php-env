@@ -2,3 +2,4 @@
 logs/nginx/
 logs/php-fpm/
 data/*
+mongo_data/*

@@ -82,6 +82,7 @@ services:
         networks:
             - backend
 
+
     ## PHP8
     php8:
         container_name: alan_php8
@@ -89,7 +90,22 @@ services:
             context: ./php8
             args: 
                 - TIMEZONE=${TIMEZONE}
+        image: alan_php8:1.0.0
         volumes: 
             - ${WEBSITES_DIR}:/home/www
+        networks:
+            - backend
+
+
+    ## MongoDB
+    mongo:
+        container_name: alan_mongo
+        build: 
+            context: ./mongo
+        image: alan_mongo:1.0.0
+        ports:
+            - "${MONGODB_PORT}:27017"
+        volumes:
+            - ${DATA_PATH_HOST}/mongo:/data/db
         networks:
             - backend
