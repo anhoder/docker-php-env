@@ -109,3 +109,28 @@ services:
             - ${DATA_PATH_HOST}/mongo:/data/db
         networks:
             - backend
+            
+    ## Swoole
+    swoole:
+        build:
+            context: ./swoole
+            args:
+                - TIMEZONE=${SWOOLE_TIMEZONE}
+                - SWOOLE_VERSION=${SWOOLE_VERSION}
+        volumes:
+            - ./swoole/php7.2.ini:/usr/local/etc/php/php.ini
+            - ./swoole/supervisord.conf:/etc/supervisord.conf
+            - ./swoole/supervisord.d:/etc/supervisord.d
+            - ./swoole/logs:/var/swoole_logs
+            - ${WEBSITES_DIR}:/home/www
+        expose:
+            - "18306"
+            - "18307"
+            - "18308"
+        ports:
+            - "18306:18306"
+            - "19001:19001"
+        environment:
+            - WORK_USER=${SWOOLE_WORK_USER}
+        networks:
+            - backend

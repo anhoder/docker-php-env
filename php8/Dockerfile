@@ -22,16 +22,16 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
 
 # 编译PHP
 RUN cd root \
-    && curl -O https://downloads.php.net/~pollita/php-8.0.0alpha1.tar.gz \
-    && tar zvxf php-8.0.0alpha1.tar.gz \
-    && cd php-8.0.0alpha1 \
+    && curl -O https://www.php.net/distributions/php-8.0.0.tar.gz \
+    && tar zvxf php-8.0.0.tar.gz \
+    && cd php-8.0.0 \
     && ./configure --prefix=/usr/local/php8 --enable-fpm --enable-mysqlnd --enable-opcache --enable-pcntl \
         --enable-mbstring --enable-soap --with-zip --enable-calendar --enable-bcmath --enable-exif --enable-ftp \
         --enable-intl --with-mysqli --with-pdo-mysql --with-openssl --with-curl --enable-gd --with-gettext \
         --with-mhash --with-openssl --with-tidy \
     && make && make install \
     && cd ../ \
-    && rm -rf php-8.0.0alpha1 php-8.0.0alpha1.tar.gz \
+    && rm -rf php-8.0.0 php-8.0.0.tar.gz \
     && echo 'export PATH=$PATH:/usr/local/php8/bin/' >> /etc/bash.bashrc
 
 CMD ["/usr/local/php8/bin/php", "-S", "127.0.0.1:8081", "./"]
