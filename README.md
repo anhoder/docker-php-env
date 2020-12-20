@@ -39,7 +39,7 @@ docker-compose up -d mysql
 1、Clone代码到本地
 
 ```sh
-git clone https://github.com/AlanAlbert/alan-php-env.git
+git clone https://github.com/anhoder/alan-php-env.git
 ```
 
 2、进入项目目录，并执行php-env-start.sh文件
